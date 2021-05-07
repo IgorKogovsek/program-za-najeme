@@ -50,7 +50,7 @@ def kreiraj_pogodbo_in_zapisnik_FO():
 
     input_najem_do = e16.get()
 
-    input_obrok_brez_DDV = e17.get()
+    input_obrok_z_DDV = e17.get()
 
     input_fakturiranje = fakturiranje.get()
 
@@ -87,8 +87,8 @@ def kreiraj_pogodbo_in_zapisnik_FO():
     tretji_clen = doc.add_paragraph()
     tretji_clen.add_run("3. CENA NAJEMA \n").bold = True
     tretji_clen.add_run(
-        "1. Cena najema znaša " + input_obrok_brez_DDV + "EUR/" + input_fakturiranje + " za obdobje iz 1. člena najemne pogodbe in se plačuje mesečno na TRR podjetja Selmar, d.o.o. \n"
-                                                                 "2. V ceno je vključeno zavarovanje, priprava vozila, dovoljenje za vožnjo izven Slovenije (če država namembnosti ni članica Evropske Unije). V ceno ni vključen 22% DDV in gorivo. \n"
+        "1. Cena najema znaša " + input_obrok_z_DDV + "EUR/" + input_fakturiranje + " za obdobje iz 1. člena najemne pogodbe in se plačuje mesečno na TRR podjetja Selmar, d.o.o. \n"
+                                                                 "2. V ceno je vključeno zavarovanje, priprava vozila, dovoljenje za vožnjo izven Slovenije (če država namembnosti ni članica Evropske Unije) in 22% DDV. V ceno ni vključeno gorivo. \n"
                                                                  "3. Vsi morebitni prometni prekrški, ki nastanejo v času najema, bremenijo najemnika. \n")
 
     cetrti_clen = doc.add_paragraph()
@@ -210,7 +210,7 @@ def kreiraj_pogodbo_in_zapisnik_FO():
                "priimek" : input_priimek_osebe,
                "najem od" : input_najem_od,
                "najem do" : input_reg_do,
-               "obrok brez DDV" : input_obrok_brez_DDV,
+               "obrok z DDV" : input_obrok_z_DDV,
                "fakturirano" : input_fakturiranje,
                "ulica" : input_ulica,
                "hišna št." : input_hisna_stevilka,
@@ -262,7 +262,7 @@ def kreiraj_pogodbo_in_zapisnik_FO():
 
     input_najem_do = e16.get()
 
-    input_obrok_brez_DDV = e17.get()
+    input_obrok_z_DDV = e17.get()
 
     input_fakturiranje = fakturiranje.get()
 
@@ -320,6 +320,7 @@ def kreiraj_pogodbo_in_zapisnik_FO():
     datum_in_ura_prevzema = doc1.add_paragraph()
     datum_in_ura_prevzema.add_run(
         "DATUM IN URA PREVZEMA: ______________________________"
+        "ŠT. PREVOŽENIH KM OB PREVZEMU: ______________________"
     )
 
     poskodbe = doc1.add_paragraph()
@@ -381,6 +382,7 @@ def kreiraj_pogodbo_in_zapisnik_FO():
     datum_in_ura_prevzema = doc1.add_paragraph()
     datum_in_ura_prevzema.add_run(
         "DATUM IN URA VRAČILA: ______________________________"
+        "ŠT. PREVOŽENIH KM OB VRAČILU: ______________________"
     )
 
     poskodbe = doc1.add_paragraph()
@@ -441,7 +443,7 @@ tk.Label(master, text="Hišna številka: ").grid(row=3)
 tk.Label(master, text="Poštna številka: ").grid(row=4)
 tk.Label(master, text="Mesto: ").grid(row=5)
 tk.Label(master, text="Država: ").grid(row=6)
-tk.Label(master, text="Dokument (potni list/osebna izkaznica): ").grid(row=7)
+tk.Label(master, text="Dokument: ").grid(row=7)
 tk.Label(master, text="Številka dokumenta: ").grid(row=8)
 tk.Label(master, text="Znamka: ").grid(row=9)
 tk.Label(master, text="Model: ").grid(row=10)
@@ -450,7 +452,7 @@ tk.Label(master, text="Registrska oznaka (npr. CE AA-123): ").grid(row=12)
 tk.Label(master, text="Registriran do: ").grid(row=13)
 tk.Label(master, text="Najem od vključno: ").grid(row=14)
 tk.Label(master, text="Najem do vključno: ").grid(row=15)
-tk.Label(master, text="Obrok brez DDV: ").grid(row=16)
+tk.Label(master, text="Obrok z DDV: ").grid(row=16)
 tk.Label(master, text="Cena na dan ali mesec: ").grid(row=17)
 tk.Label(master, text="Kraj izdaje: ").grid(row=18)
 tk.Label(master, text="Skrbnik: ").grid(row=19)
@@ -477,7 +479,8 @@ PERSONS = [
     "Mašat Sandi",
     "Peklar Maja",
     "Sekulič Peter",
-    "Seles Marcel"
+    "Seles Marcel",
+    "Seles Uroš"
 ]
 
 FACTURING = [
@@ -487,7 +490,8 @@ FACTURING = [
 
 DOCUMENTS = [
     "potni list",
-    "osebna izkaznica"
+    "osebna izkaznica",
+    "vozniško dovoljenje"
 ]
 
 dokument = StringVar(master)
